@@ -1,0 +1,132 @@
+:root {
+  --bg: #150a24;
+  --bg-elevated: #1f1038;
+  --bg-card: #241344;
+  --border: #3a2456;
+  --purple: #9d4edd;
+  --purple-light: #c77dff;
+  --text: #ede7f6;
+  --text-muted: #a996c9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg) 0%, #1b0e30 100%);
+  color: var(--text);
+  font-family: "Segoe UI", "Pretendard", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 16px;
+}
+
+header {
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+h1 {
+  color: var(--purple-light);
+  margin: 0 0 16px;
+  font-size: 1.8em;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 8px 18px;
+  border-radius: 999px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+nav a:hover {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #120a1f;
+}
+
+main {
+  width: 100%;
+  max-width: 640px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+main p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+li.done {
+  opacity: 0.6;
+}
+
+li.done .title {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.meta {
+  font-size: 0.85em;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.status-badge {
+  font-size: 0.8em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--purple);
+  color: var(--purple-light);
+  white-space: nowrap;
+}
+
+li.done .status-badge {
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+#status {
+  color: var(--text-muted);
+}

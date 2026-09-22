@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Todos Preview</title>
-  <style>
-    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
-    ul { list-style: none; padding: 0; }
-    li { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ddd; }
-    li.done .title { text-decoration: line-through; color: #999; }
-    .title { font-weight: bold; }
-    .meta { font-size: 0.85em; color: #888; }
-    #status { color: #888; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Todos</h1>
-  <p id="status">불러오는 중...</p>
-  <ul id="todo-list"></ul>
+  <header>
+    <h1>Todos</h1>
+    <nav>
+      <a href="index.html">홈</a>
+      <a href="about.html">About</a>
+      <a href="preview.html">Preview</a>
+    </nav>
+  </header>
+  <main>
+    <p id="status">불러오는 중...</p>
+    <ul id="todo-list"></ul>
+  </main>
 
   <script>
     const SUPABASE_URL = "https://gqumhxblaczdfycrkcss.supabase.co/rest/v1/";
@@ -61,6 +62,7 @@
           info.appendChild(metaEl);
 
           const statusSpan = document.createElement("span");
+          statusSpan.className = "status-badge";
           statusSpan.textContent = todo.done ? "완료" : "미완료";
 
           li.appendChild(info);
