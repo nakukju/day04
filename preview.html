@@ -6,7 +6,10 @@
   <style>
     body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
     ul { list-style: none; padding: 0; }
-    li { padding: 10px; border-bottom: 1px solid #ddd; }
+    li { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ddd; }
+    li.done .title { text-decoration: line-through; color: #999; }
+    .title { font-weight: bold; }
+    .meta { font-size: 0.85em; color: #888; }
     #status { color: #888; }
   </style>
 </head>
@@ -45,7 +48,23 @@
         statusEl.remove();
         todos.forEach(todo => {
           const li = document.createElement("li");
-          li.textContent = JSON.stringify(todo);
+          if (todo.done) li.classList.add("done");
+
+          const info = document.createElement("div");
+          const titleEl = document.createElement("div");
+          titleEl.className = "title";
+          titleEl.textContent = todo.title;
+          const metaEl = document.createElement("div");
+          metaEl.className = "meta";
+          metaEl.textContent = "수량: " + todo.amount + " · 마감일: " + todo.due_date;
+          info.appendChild(titleEl);
+          info.appendChild(metaEl);
+
+          const statusSpan = document.createElement("span");
+          statusSpan.textContent = todo.done ? "완료" : "미완료";
+
+          li.appendChild(info);
+          li.appendChild(statusSpan);
           listEl.appendChild(li);
         });
       } catch (err) {
